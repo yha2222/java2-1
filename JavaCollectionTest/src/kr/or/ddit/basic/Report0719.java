@@ -1,7 +1,13 @@
 package kr.or.ddit.basic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+//학번, 이름, 국어점수, 영어점수, 수학점수, 총점, 등수를 멤버로 갖는
+//Student클래스를 만든다.
+//생성자는 학번, 이름, 국어, 영어, 수학 점수만 매개변수로 받아서 처리한다.
+//이 Student객체들은 List에 저장하여 관리한다.
 
 public class Report0719 {
 
@@ -20,6 +26,8 @@ public class Report0719 {
 		}
 		System.out.println("==================================");
 		
+		Collections.sort(stdList);
+		
 		System.out.println("정렬 후: ");
 		for(Student std : stdList) {
 			System.out.println(std);
@@ -28,69 +36,63 @@ public class Report0719 {
 
 }
 
-// List에 저장된 데이터들을 /학번의 오름차순/으로 정렬하여 출력하는 부분과
 //  /총점의 역순/으로 정렬하는 부분을 프로그램 하시오.
-// (총점이 같으면 학번의 내림차순으로 정렬되도록 한다.)
-// (학번 정렬기준은 Student클래스 자체에서 제공하도록 하고,
+// (총점로이 같으면 학번의 내림차순으 정렬되도록 한다.)
+
 // 총점 정렬기준은 외부클래스에서 제공하도록 한다.)
-class Student {
-	private int num;
+class Student implements Comparable<Student> {
+	private int stdNo;
 	private String name;
-	private int korScore;
-	private int engScore;
-	private int matScore;
-	private int allScore;
+	private int kor;
+	private int eng;
+	private int mat;
+	private int sum;
 	private int rank;
 	
-	public Student(int num, String name, int korScore, int engScore, int matScore) {
+	public Student(int stdNo, String name, int kor, int eng, int mat) {
 		super();
-		this.num = num;
+		this.stdNo = stdNo;
 		this.name = name;
-		this.korScore = korScore;
-		this.engScore = engScore;
-		this.matScore = matScore;
-	}
-
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getKorScore() {
-		return korScore;
-	}
-
-	public void setKorScore(int korScore) {
-		this.korScore = korScore;
-	}
-
-	public int getEngScore() {
-		return engScore;
-	}
-
-	public void setEngScore(int engScore) {
-		this.engScore = engScore;
-	}
-
-	public int getMatScore() {
-		return matScore;
-	}
-
-	public void setMatScore(int matScore) {
-		this.matScore = matScore;
+		this.kor = kor;
+		this.eng = eng;
+		this.mat = mat;
 	}
 	
-	
+	public int getStdNo() {
+		return stdNo;
+	}
+
+	public void setStdNo(int stdNo) {
+		this.stdNo = stdNo;
+	}
+
+	public int getSum() {
+		return sum;
+	}
+
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Student [stdNo=" + stdNo + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", mat=" + mat + "]";
+	}
+
+	@Override
+	public int compareTo(Student std) {
+		//return this.getStdNo().compareTo(std.getStdNo());
+		return this.getStdNo() - std.getStdNo();
+	}
+		
+}
+
+class SortSumDesc implements Comparator<Student>{
+
+	@Override
+	public int compare(Student o1, Student o2) {
+		return o1.getSum() - o2.getSum();
+	}
 	
 }
