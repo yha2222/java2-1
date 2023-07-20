@@ -52,8 +52,7 @@ public class T05HashSetTest {
 		//hs1.clear();   //전체자료 삭제
 		//System.out.println("clear() 후 데이터 크기 : " + hs1.size());
 		
-		// Set은 데이터 인덱스 개념이 존재하지 않기 때문에 데이터를 하나씩 가져오기 위해서
-		// Iterator 객체를 이용
+		// Set은 데이터 인덱스 개념이 존재하지 않기 때문에 데이터를 하나씩 가져오기 위해서 Iterator 객체를 이용
 		Iterator it = hs1.iterator();
 		
 		//데이터 개수만큼 반복하기
