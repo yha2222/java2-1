@@ -6,7 +6,7 @@ public class T02StackQueueTest {
 	public static void main(String[] args) {
 		/*
 		 * Stack => 후입선출(LIFO)의 자료구조
-		 * Queue => 선입선출(LIFO)의 자료구조
+		 * Queue => 선입선출(FIFO)의 자료구조
 		 */
 		
 		LinkedList<String> stack = new LinkedList<String>();

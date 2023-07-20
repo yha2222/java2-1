@@ -4,31 +4,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-//학번, 이름, 국어점수, 영어점수, 수학점수, 총점, 등수를 멤버로 갖는
-//Student클래스를 만든다.
-//생성자는 학번, 이름, 국어, 영어, 수학 점수만 매개변수로 받아서 처리한다.
-//이 Student객체들은 List에 저장하여 관리한다.
 
 public class Report0719 {
 
 	public static void main(String[] args) {
 		List<Student> stdList = new ArrayList<Student>();
-		stdList.add(new Student(30111, "이금기", 98, 55, 41));
-		stdList.add(new Student(31023, "홍길동", 24, 88, 96));
-		stdList.add(new Student(20507, "이성계", 36, 22, 73));
-		stdList.add(new Student(20420, "강감찬", 77, 31, 86));
-		stdList.add(new Student(10705, "고길동", 99, 42, 28));
-		stdList.add(new Student(11122, "이순신", 14, 66, 99));
+		stdList.add(new Student("30111", "이금기", 98, 0, 0));
+		stdList.add(new Student("31023", "홍길동", 24, 0, 0));
+		stdList.add(new Student("20507", "이성계", 36, 0, 0));
+		stdList.add(new Student("20420", "강감찬", 0, 0, 86));
+		stdList.add(new Student("10705", "고길동", 0, 42, 0));
+		stdList.add(new Student("11122", "이순신", 0, 98, 0));
 		
-		System.out.println("정렬 전: ");
+		Collections.sort(stdList);
+		System.out.println("회원 번호 기준: ");
 		for(Student std : stdList) {
 			System.out.println(std);
 		}
 		System.out.println("==================================");
 		
-		Collections.sort(stdList);
+		Collections.sort(stdList, new SortSumDesc());
 		
-		System.out.println("정렬 후: ");
+		System.out.println("총점 기준 역순: ");
 		for(Student std : stdList) {
 			System.out.println(std);
 		}
@@ -36,12 +33,8 @@ public class Report0719 {
 
 }
 
-//  /총점의 역순/으로 정렬하는 부분을 프로그램 하시오.
-// (총점로이 같으면 학번의 내림차순으 정렬되도록 한다.)
-
-// 총점 정렬기준은 외부클래스에서 제공하도록 한다.)
 class Student implements Comparable<Student> {
-	private int stdNo;
+	private String stdNo;
 	private String name;
 	private int kor;
 	private int eng;
@@ -49,7 +42,7 @@ class Student implements Comparable<Student> {
 	private int sum;
 	private int rank;
 	
-	public Student(int stdNo, String name, int kor, int eng, int mat) {
+	public Student(String stdNo, String name, int kor, int eng, int mat) {
 		super();
 		this.stdNo = stdNo;
 		this.name = name;
@@ -58,22 +51,22 @@ class Student implements Comparable<Student> {
 		this.mat = mat;
 	}
 	
-	public int getStdNo() {
+	public String getStdNo() {
 		return stdNo;
 	}
 
-	public void setStdNo(int stdNo) {
+	public void setStdNo(String stdNo) {
 		this.stdNo = stdNo;
 	}
 
 	public int getSum() {
+		sum = kor + eng + mat;
 		return sum;
 	}
 
 	public void setSum(int sum) {
 		this.sum = sum;
 	}
-
 
 	@Override
 	public String toString() {
@@ -82,8 +75,7 @@ class Student implements Comparable<Student> {
 
 	@Override
 	public int compareTo(Student std) {
-		//return this.getStdNo().compareTo(std.getStdNo());
-		return this.getStdNo() - std.getStdNo();
+		return this.getStdNo().compareTo(std.getStdNo());
 	}
 		
 }
@@ -91,8 +83,15 @@ class Student implements Comparable<Student> {
 class SortSumDesc implements Comparator<Student>{
 
 	@Override
-	public int compare(Student o1, Student o2) {
-		return o1.getSum() - o2.getSum();
+	public int compare(Student mem1, Student mem2) {
+		int sumCom = new Integer(mem1.getSum()).compareTo(mem2.getSum()) * -1;
+		
+		if(sumCom != 0) {
+			return sumCom;
+		} else {
+			return mem1.getStdNo().compareTo(mem2.getStdNo());
+		}	
+		
 	}
 	
 }

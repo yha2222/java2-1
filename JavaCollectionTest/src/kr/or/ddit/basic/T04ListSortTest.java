@@ -24,8 +24,22 @@ public class T04ListSortTest {
 		System.out.println("==================================");
 		
 		Collections.sort(memList); //이름 기준 오름차순 정렬 시키기
+		Collections.sort(memList, new SortNumDesc());
 		
 		System.out.println("정렬 후: ");
+		for(Member mem : memList) {
+			System.out.println(mem);
+		}
+		
+		//섞
+		Collections.shuffle(memList);
+		System.out.println("섞은 후: ");
+		for(Member mem : memList) {
+			System.out.println(mem);
+		}
+		
+		Collections.sort(memList, new SortNumDesc());
+		System.out.println("번호 내림차순 정렬 후: ");
 		for(Member mem : memList) {
 			System.out.println(mem);
 		}
@@ -87,9 +101,17 @@ class Member implements Comparable<Member> {
 class SortNumDesc implements Comparator<Member>{
 
 	@Override
-	public int compare(Member o1, Member o2) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compare(Member mem1, Member mem2) {
+		return new Integer(mem1.getNum()).compareTo(mem2.getNum()) * -1;
+		
+//		if(mem1.getNum() > mem2.getNum()) {
+//			return -1;
+//		}else if(mem1.getNum() == mem2.getNum()) {
+//			return 0;
+//		}else {
+//			return 1;
+//		}
+		
+		
 	}
-	
 }
