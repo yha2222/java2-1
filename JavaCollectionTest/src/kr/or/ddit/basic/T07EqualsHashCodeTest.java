@@ -13,7 +13,7 @@ public class T07EqualsHashCodeTest {
       HashSet, HashMap, Hashtable에서 객체가 같은지 여부는 데이터를 추가할 때 검사함
       
       - equals() : 두 객체의 내용(값)이 같은지 비교하는 메서드
-      - hashCode()는 객체에 대한 해시코드값을 반환하는 메서드
+      - hashCode() : 객체에 대한 해시코드값을 반환하는 메서드
       
       - equals()와 hashCode()메서드에 관한 규칙(Convention)
       1. 두 객체가 같으면 반드시 같은 해시코드를 가져야 한다.
@@ -39,7 +39,7 @@ public class T07EqualsHashCodeTest {
 		
 		//같은 해시코드여도 다른 값인 거 확인
 		System.out.println(p1.hashCode() + " : " + p2.hashCode());
-		//equals는 같다고 나오지만 값 다르게 나옴 => override 해줘야 됨
+		//equals는 같다고 나오지만 값 다르게 나옴 => override 해줘야 됨 -- hashCode도 같이
 		System.out.println(new String("홍길동").hashCode()); //다른 메모리인데 같은 해시코드 <= override
 		System.out.println(new String("홍길동").hashCode());
 		

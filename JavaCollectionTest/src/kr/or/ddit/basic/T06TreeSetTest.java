@@ -8,7 +8,8 @@ import java.util.TreeSet;
 
 public class T06TreeSetTest {
 	public static void main(String[] args) {
-		// TreeSet은 자동 정렬 기능이 들어가 있다
+		// TreeSet은 '자동 정렬 기능'이 들어가 있다
+		//Tree 자료구조 => 검색 속도 빠름(무조건은 아니고 루트 유형 따라)
 		TreeSet<String> ts = new TreeSet<String>();
 		
 		List<String> abcList = new ArrayList<String>();

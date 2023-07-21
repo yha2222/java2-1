@@ -56,6 +56,7 @@ public class T05HashSetTest {
 		Iterator it = hs1.iterator();
 		
 		//데이터 개수만큼 반복하기
+		//Iterator 타입 객체 -> hasNext(), next() ...
 		//hasNext() 메서드 => 포인터 다음 위치에 데이터가 있으면 true, 없으면 false를 반환
 		while(it.hasNext()) {    //다음 데이터 있는지 검사
 			// next() 메서드 => 다음 위치의 데이터를 반환
@@ -72,8 +73,9 @@ public class T05HashSetTest {
 		
 		System.out.println("만들어진 난수들: " + intRnd);
 		
-		//Collection 유형의 객체들은 서로 다른 자료 구조로 쉽게 변경해서 사용 가능
+		//Collection 유형의 객체들은 서로 다른 자료 구조로 쉽게 변경해서 사용 가능-호환 가능
 		// 다른 종류의 객체를 생성할 때 생성자에 변경할 객체를 넣어주면 됨
+		//Set => List 
 		List<Integer> intRndList = new ArrayList<Integer>(intRnd);
 		System.out.println("List의 자료 출력...");
 		
