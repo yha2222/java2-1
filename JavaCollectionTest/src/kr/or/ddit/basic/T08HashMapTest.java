@@ -26,7 +26,7 @@ public class T08HashMapTest {
 		map.remove("name");
 		System.out.println("map => " + map);
 		
-		//데이터 읽기
+		//데이터 읽기 => parameter - key값
 		System.out.println("addr = " + map.get("addr"));
 		System.out.println("============================================");
 		
