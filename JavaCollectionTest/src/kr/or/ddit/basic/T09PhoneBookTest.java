@@ -234,7 +234,7 @@ public class T09PhoneBookTest {
 		System.out.print("전화번호 >> ");
 		String tel = scan.next();
 		
-		scan.nextLine(); //입력버퍼ㄴ에 남아있는 엔터키를 읽어오는 용도
+		scan.nextLine(); //입력버퍼에 남아있는 엔터키를 읽어오는 용도
 		
 		System.out.print("주소 >> ");
 		String addr = scan.nextLine();
@@ -248,8 +248,6 @@ public class T09PhoneBookTest {
 	public static void main(String[] args) {
 		new T09PhoneBookTest().phoneBookStart();
 	}
-		
-
 }
 
 /*
